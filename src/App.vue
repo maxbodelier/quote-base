@@ -1,28 +1,53 @@
 <template>
   <div id="app">
-    <img alt="Vue logo" src="./assets/logo.png">
-    <HelloWorld msg="Welcome to Your Vue.js App"/>
+    <navigation @active-quote-type-changed="changeActiveQuoteType" :navigation-items="quoteTypes" :active-quote-type="activeQuoteType"></navigation>
+    <router-view :key="`${$route.fullPath}`" :quoteTypes="quoteTypes" :active-quote-type="activeQuoteType"></router-view>
   </div>
 </template>
 
 <script>
-import HelloWorld from './components/HelloWorld.vue'
 
+
+import Navigation from "./components/navigation/navigation";
 export default {
   name: 'App',
-  components: {
-    HelloWorld
+  components: {Navigation},
+  data() {
+    return {
+      quoteTypes: ['programming', 'wisdom'],
+      activeQuoteType: 'programming'
+    }
+  },
+  created() {
+    this.$session.start();
+  },
+  methods: {
+    changeActiveQuoteType(type) {
+      this.activeQuoteType = type
+    }
+  },
+  destroyed() {
+    console.log('destroying')
+    this.$session.clear();
+    this.$session.destroy();
   }
 }
 </script>
 
-<style>
-#app {
-  font-family: Avenir, Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
-  margin-top: 60px;
+<style lang="scss">
+@import "styles/fonts";
+@import "styles/colors";
+@import "styles/typography";
+
+body {
+  margin: 0;
+  background-color: $background-color-default;
 }
+
+#app {
+  font-family: inter, sans-serif;
+  color: $font-color-normal;
+}
+
+
 </style>
