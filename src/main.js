@@ -7,10 +7,9 @@ import VueSession from 'vue-session'
 import VueLodash from 'vue-lodash'
 import lodash from 'lodash'
 
-
 //routes
 import home from "./components/views/home";
-import favourites from "./components/views/favourites";
+import favorites from "./components/views/favorites";
 
 Vue.use(VueMq, {
     breakpoints: {
@@ -29,7 +28,7 @@ Vue.use(VueLodash, { name: 'custom' , lodash: lodash })
 const router = new VueRouter({
     routes: [
         {path: '/', component: home},
-        {path: '/favourites', component: favourites}
+        {path: '/favorites', component: favorites}
     ],
     mode: "history",
     linkActiveClass: "is-active"

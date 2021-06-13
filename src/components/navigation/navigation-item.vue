@@ -1,8 +1,7 @@
 <template>
   <div class="navigation-item">
-    {{ navigationItem.replace('-',' ') }}
+    {{ formattedNavigationItem }}
   </div>
-
 </template>
 
 <script>
@@ -13,6 +12,11 @@ export default {
       type: String,
       required: true
     }
+  },
+  computed: {
+    formattedNavigationItem() {
+      return this.navigationItem.replace('-',' ')
+    }
   }
 }
 </script>
@@ -21,5 +25,4 @@ export default {
 .navigation-item {
   text-transform: capitalize;
 }
-
 </style>

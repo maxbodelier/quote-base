@@ -1,13 +1,14 @@
 <template>
-  <div v-if="favouriteQuotes.length > 0">
-    <quote
-      v-for="(quote, quoteIndex) in favouriteQuotes"
-      :key="quoteIndex"
-      :text="quote.text"
-      :author="quote.author"
-      :hasFavouriteButton="false"
-    >
-    </quote>
+  <div v-if="favouriteQuotes && favouriteQuotes.length > 0">
+    <div v-for="(quote, quoteIndex) in favouriteQuotes" :key="quoteIndex">
+      <quote
+        v-if="quote && quote.text"
+        :text="quote.text"
+        :author="quote.author"
+        :hasFavouriteAddButton="false"
+        @delete-favourite-quote="getAllQuotesFromSession"
+      ></quote>
+    </div>
   </div>
   <div v-else class="quote-message">
     <h3 class="heading-3">You have No Favorite Quotes :(</h3>
@@ -17,8 +18,9 @@
 
 <script>
 import Quote from "../quote";
+
 export default {
-  name: "favourites",
+  name: "favorites",
   components: {Quote},
   data() {
     return {
@@ -33,11 +35,12 @@ export default {
       let favouriteQuotes = []
       const session = this.$session.getAll();
       for (const key in session) {
-        if(Object.prototype.hasOwnProperty.call(session, key)){
+        if (Object.prototype.hasOwnProperty.call(session, key)) {
           favouriteQuotes.push(session[key])
         }
       }
-      favouriteQuotes.splice(0,1);
+      //remove session ID
+      favouriteQuotes.splice(0, 1);
       this.favouriteQuotes = favouriteQuotes
     }
   }
@@ -48,5 +51,4 @@ export default {
 .quote-message {
   text-align: center;
 }
-
 </style>

@@ -10,8 +10,6 @@
   <div v-else class="desktop-navigation">
     <navigation-item :navigation-item="getRouteName()" class="desktop-navigation-item heading-1 is-active no-cursor"></navigation-item>
   </div>
-
-
 </template>
 
 <script>
@@ -82,5 +80,4 @@ export default {
     }
   }
 }
-
 </style>

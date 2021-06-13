@@ -1,7 +1,14 @@
 <template>
   <div v-if="quoteDetails && quoteDetails.text">
-    <quote :text="quoteDetails.text" :author="quoteDetails.author"></quote>
-    <quote-button button-text="next quote" @fetch-new-quote="fetchQuote"></quote-button>
+    <quote
+      :text="quoteDetails.text"
+      :author="quoteDetails.author"
+      :has-favourite-remove-button="false"
+    ></quote>
+    <quote-button
+      button-text="next quote"
+      @fetch-new-quote="fetchQuote"
+    ></quote-button>
   </div>
 </template>
 
@@ -33,6 +40,8 @@ export default {
           this.quotes = res.data
           this.quoteDetails = this.getRandomQuote(this.quotes)
         }
+      }).catch((error) => {
+        console.log(error);
       });
     }
   }
@@ -40,6 +49,4 @@ export default {
 }
 </script>
 
-<style scoped>
-
-</style>
+<style scoped lang="scss"></style>
