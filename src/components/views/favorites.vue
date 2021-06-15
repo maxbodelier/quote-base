@@ -33,14 +33,13 @@ export default {
   methods: {
     getAllQuotesFromSession() {
       let favouriteQuotes = []
-      const session = this.$session.getAll();
-      for (const key in session) {
-        if (Object.prototype.hasOwnProperty.call(session, key)) {
-          favouriteQuotes.push(session[key])
+      if(window.sessionStorage && window.sessionStorage.length > 0){
+        for(let i = 0; i < window.sessionStorage.length; i++) {
+          const key = window.sessionStorage.key(i)
+          const quote = window.sessionStorage.getItem(key)
+          favouriteQuotes.push(JSON.parse(quote))
         }
       }
-      //remove session ID
-      favouriteQuotes.splice(0, 1);
       this.favouriteQuotes = favouriteQuotes
     }
   }

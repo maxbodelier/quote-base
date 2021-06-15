@@ -1,9 +1,13 @@
 <template>
   <div v-if="quoteDetails && quoteDetails.text">
-    <quote
-      :text="quoteDetails.text"
-      :author="quoteDetails.author"
-      :has-favourite-remove-button="false"
+    <quote v-if="quoteDetails.author"
+           :text="quoteDetails.text"
+           :author="quoteDetails.author"
+           :has-favourite-remove-button="false"
+    ></quote>
+    <quote v-else
+           :text="quoteDetails.text"
+           :has-favourite-remove-button="false"
     ></quote>
     <quote-button
       button-text="next quote"
@@ -38,7 +42,10 @@ export default {
       this.fetchWisdomQuotes().then((res) => {
         if(res && res.data) {
           this.quotes = res.data
+          console.log(this.quotes.length)
           this.quoteDetails = this.getRandomQuote(this.quotes)
+          this.quoteDetails.text = this.quoteDetails.text === '' ? undefined : this.quoteDetails.text;
+          this.quoteDetails.author = this.quoteDetails.author === '' ? undefined : this.quoteDetails.author;
         }
       }).catch((error) => {
         console.log(error);

@@ -25,17 +25,10 @@ export default {
       activeQuoteType: 'programming'
     }
   },
-  created() {
-    this.$session.start();
-  },
   methods: {
     changeActiveQuoteType(type) {
       this.activeQuoteType = type
     }
-  },
-  destroyed() {
-    this.$session.clear();
-    this.$session.destroy();
   }
 }
 </script>

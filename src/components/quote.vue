@@ -1,5 +1,5 @@
 <template>
-  <div class="quote-container width-container">
+  <div v-if="text" class="quote-container width-container">
     <div class="quote">
       <h2 class="quote-text heading-2">{{ text }}</h2>
       <p
@@ -10,15 +10,15 @@
       </p>
       <p
         v-if="hasFavouriteAddButton"
-        class="quote-favorites"
-        @click="addTofavorites"
+        class="quote-add-favorites"
+        @click="addToFavorites"
       >
         + add to favorites
       </p>
       <p
         v-if="hasFavouriteRemoveButton"
-        class="quote-favorites"
-        @click="removeFromfavorites"
+        class="quote-remove-favorites"
+        @click="removeFromFavorites"
       >
         - remove from favorites
       </p>
@@ -37,7 +37,7 @@ export default {
     },
     author: {
       type: String,
-      default: 'Unkown Author'
+      default: 'Unknown Author'
     },
     hasFavouriteAddButton: {
       type: Boolean,
@@ -48,24 +48,21 @@ export default {
       default: true
     }
   },
-  created() {
-  },
   methods: {
-    addTofavorites() {
-      this.$session.set(`${this.createdUniqueIdFromText()}`, {
+    addToFavorites() {
+      const quoteObject = {
         'text': this.text,
         'author': this.author
-      })
+      }
+
+      window.sessionStorage.setItem(`${this.createdUniqueIdFromText()}`, JSON.stringify(quoteObject))
     },
-    removeFromfavorites() {
-      console.log(`${this.createdUniqueIdFromText()}`)
-      this.$session.remove(`${this.createdUniqueIdFromText()}`)
+    removeFromFavorites() {
+      window.sessionStorage.removeItem(`${this.createdUniqueIdFromText()}`)
       this.$emit('delete-favourite-quote')
     },
     createdUniqueIdFromText() {
-      let textToRandomize = this.text.substr(0, 20);
-      textToRandomize = textToRandomize.replace(/ /g, '')
-      const uniqueId = textToRandomize.toUpperCase();
+      let uniqueId = this.text.replace(/ /g, '').substr(0, 20).toUpperCase();
       return `favourite_quote_${uniqueId}`
     }
   }
@@ -91,7 +88,7 @@ export default {
       text-align: right;
     }
 
-    .quote-favorites {
+    .quote-add-favorites, .quote-remove-favorites {
       cursor: pointer;
       width: fit-content;
       text-align: center;

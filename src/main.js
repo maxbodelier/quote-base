@@ -1,9 +1,8 @@
 import Vue from 'vue'
 import App from './App.vue'
 import VueMq from 'vue-mq'
-import VueMeta from 'vue-meta';
-import VueRouter from 'vue-router';
-import VueSession from 'vue-session'
+import VueMeta from 'vue-meta'
+import VueRouter from 'vue-router'
 import VueLodash from 'vue-lodash'
 import lodash from 'lodash'
 
@@ -21,7 +20,6 @@ Vue.use(VueMq, {
 })
 Vue.use(VueMeta)
 Vue.use(VueRouter)
-Vue.use(VueSession)
 Vue.use(VueLodash, { name: 'custom' , lodash: lodash })
 
 
