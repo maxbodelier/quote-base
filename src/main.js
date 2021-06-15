@@ -1,16 +1,14 @@
 import Vue from 'vue'
 import App from './App.vue'
 import VueMq from 'vue-mq'
-import VueMeta from 'vue-meta';
-import VueRouter from 'vue-router';
-import VueSession from 'vue-session'
+import VueMeta from 'vue-meta'
+import VueRouter from 'vue-router'
 import VueLodash from 'vue-lodash'
 import lodash from 'lodash'
 
-
 //routes
 import home from "./components/views/home";
-import favourites from "./components/views/favourites";
+import favorites from "./components/views/favorites";
 
 Vue.use(VueMq, {
     breakpoints: {
@@ -22,14 +20,13 @@ Vue.use(VueMq, {
 })
 Vue.use(VueMeta)
 Vue.use(VueRouter)
-Vue.use(VueSession)
 Vue.use(VueLodash, { name: 'custom' , lodash: lodash })
 
 
 const router = new VueRouter({
     routes: [
         {path: '/', component: home},
-        {path: '/favourites', component: favourites}
+        {path: '/favorites', component: favorites}
     ],
     mode: "history",
     linkActiveClass: "is-active"

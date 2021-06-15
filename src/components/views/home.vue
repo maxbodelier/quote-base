@@ -3,7 +3,6 @@
 </template>
 
 <script>
-import Navigation from "../../components/navigation/navigation";
 import ProgrammingQuotes from "../../components/quote-types/programming-quotes";
 import WisdomQuotes from "../../components/quote-types/wisdom-quotes";
 
@@ -11,8 +10,7 @@ export default {
   name: "home",
   components: {
     'programming': ProgrammingQuotes,
-    'wisdom': WisdomQuotes,
-    Navigation
+    'wisdom': WisdomQuotes
   },
   props: {
     quoteTypes: {
@@ -27,6 +25,4 @@ export default {
 }
 </script>
 
-<style scoped>
-
-</style>
+<style scoped lang="scss"></style>

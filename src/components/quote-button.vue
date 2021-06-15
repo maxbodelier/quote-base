@@ -1,6 +1,11 @@
 <template>
-  <div class="button-container">
-    <button class="button heading-3" @click="$emit('fetch-new-quote')">{{ buttonText }}</button>
+  <div class="button-container width-container">
+    <button
+      class="button heading-3"
+      @click="$emit('fetch-new-quote')"
+    >
+      {{ buttonText }}
+    </button>
   </div>
 </template>
 
@@ -20,7 +25,6 @@ export default {
 @import "src/styles/colors";
 
 .button-container {
-  max-width: 1280px;
   margin: 64px auto;
   display: flex;
   justify-content: center;
@@ -28,7 +32,7 @@ export default {
   .button {
     cursor: pointer;
     padding: 16px 32px;
-    background-color: #55cd96;
+    background-color: $background-color-accent-green;
     border-radius: 16px;
     border: none;
     color: $font-color-normal;

@@ -1,14 +1,21 @@
 <template>
   <div id="app">
-    <navigation @active-quote-type-changed="changeActiveQuoteType" :navigation-items="quoteTypes" :active-quote-type="activeQuoteType"></navigation>
-    <router-view :key="`${$route.fullPath}`" :quoteTypes="quoteTypes" :active-quote-type="activeQuoteType"></router-view>
+    <navigation
+      @active-quote-type-changed="changeActiveQuoteType"
+      :navigation-items="quoteTypes"
+      :active-quote-type="activeQuoteType"
+    ></navigation>
+    <router-view
+      :key="`${$route.fullPath}`"
+      :quoteTypes="quoteTypes"
+      :active-quote-type="activeQuoteType"
+    ></router-view>
   </div>
 </template>
 
 <script>
-
-
 import Navigation from "./components/navigation/navigation";
+
 export default {
   name: 'App',
   components: {Navigation},
@@ -18,18 +25,10 @@ export default {
       activeQuoteType: 'programming'
     }
   },
-  created() {
-    this.$session.start();
-  },
   methods: {
     changeActiveQuoteType(type) {
       this.activeQuoteType = type
     }
-  },
-  destroyed() {
-    console.log('destroying')
-    this.$session.clear();
-    this.$session.destroy();
   }
 }
 </script>
@@ -38,6 +37,7 @@ export default {
 @import "styles/fonts";
 @import "styles/colors";
 @import "styles/typography";
+@import "styles/spacing";
 
 body {
   margin: 0;
@@ -48,6 +48,4 @@ body {
   font-family: inter, sans-serif;
   color: $font-color-normal;
 }
-
-
 </style>

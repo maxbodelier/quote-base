@@ -1,7 +1,18 @@
 <template>
   <div v-if="quoteDetails && quoteDetails.quote">
-    <quote :text="quoteDetails.quote" :author="quoteDetails.author"></quote>
-    <quote-button button-text="next quote" @fetch-new-quote="fetchQuote"></quote-button>
+    <quote v-if="quoteDetails.author"
+      :text="quoteDetails.quote"
+      :author="quoteDetails.author"
+      :has-favourite-remove-button="false"
+    ></quote>
+    <quote v-else
+           :text="quoteDetails.quote"
+           :has-favourite-remove-button="false"
+    ></quote>
+    <quote-button
+      button-text="next quote"
+      @fetch-new-quote="fetchQuote"
+    ></quote-button>
   </div>
 </template>
 
@@ -26,14 +37,16 @@ export default {
     fetchQuote() {
       this.fetchProgrammingQuotes().then((res) => {
         if (res && res.data) {
-          this.quoteDetails = res.data
+          this.quoteDetails = res.data;
+          this.quoteDetails.quote = this.quoteDetails.quote === '' ? undefined : this.quoteDetails.quote;
+          this.quoteDetails.author = this.quoteDetails.author === '' ? undefined : this.quoteDetails.author;
         }
+      }).catch((error) => {
+        console.log(error);
       });
     }
   }
 }
 </script>
 
-<style scoped>
-
-</style>
+<style scoped lang="scss"></style>
