@@ -1,5 +1,5 @@
 # Quote-Base
-This VueJs application displays random quotes on the home page. On the home page the user can choose between two types of quotes: programming and wisdom oriented. The programming quotes are fetched from a <a href="http://quotes.stormconsultancy.co.uk/random.json">public API</a> one at a time. The wisdom quotes are fetched from a <a href="https://type.fit/api/quotes">public API</a> with around 1600 entries, from which one wisdom quote is selected and displayed. The fetching of results from both API's is done with axios.
+This VueJs application displays random quotes on the home page. On the home page the user can choose between two types of quotes: programming and wisdom oriented. The programming quotes are fetched from a <a href="http://quotes.stormconsultancy.co.uk/random.json" target="_blank">public API</a> one at a time. The wisdom quotes are fetched from a <a href="https://type.fit/api/quotes" target="_blank">public API</a> with around 1600 entries, from which one wisdom quote is selected and displayed. The fetching of results from both API's is done with axios.
 
 While viewing a type of quote, a user can add the displayed code to their favorites. Users can add as many quotes as to their favorites while the application makes sure no duplicates are added. The favorite quotes are stored in the session storage.
 
