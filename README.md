@@ -1,5 +1,5 @@
 # Quote-Base
-This VueJs application displays random quotes on the home page. On the home page the user can choose between two types of quotes: programming and wisdom oriented. The programming quotes are fetched from a <a href="http://quotes.stormconsultancy.co.uk/random.json">public API</a> one at a time. The wisdom quotes are fetched from a <a href="https://type.fit/api/quotes">public API</a> with around 1600 entries. Then one wisdom quote is selected and displayed. The fetching of results from both API's is done with axios.
+This VueJs application displays random quotes on the home page. On the home page the user can choose between two types of quotes: programming and wisdom oriented. The programming quotes are fetched from a <a href="http://quotes.stormconsultancy.co.uk/random.json">public API</a> one at a time. The wisdom quotes are fetched from a <a href="https://type.fit/api/quotes">public API</a> with around 1600 entries, from which one wisdom quote is selected and displayed. The fetching of results from both API's is done with axios.
 
 While viewing a type of quote, a user can add the displayed code to their favorites. Users can add as many quotes as to their favorites while the application makes sure no duplicates are added. The favorite quotes are stored in the session storage.
 
@@ -13,44 +13,21 @@ Enjoy reading the quotes!
 
 ![quote-base.png](./src/assets/images/quote-base.png)
 
-<ul>  
-<li><a href="#project-setup">
-Project Setup
-</a>
-<ul>
-<li>
-<a href="#installing">Installing</a>
-</li>
-<li>
-<a href="#development">Development</a>
-</li>
-<li>
-<a href="#production">Production</a>
-</li>
-<li>
-<a href="#lint">Code corrections</a>
-</li>
-<li>
-<a href="#tests">Running tests</a>
-</li>
-</ul>
-</li>  
-<li>
-<a href="#features">Features</a>
-</li>
-<li>
-<a href="#qa">Quality Assurance</a>
-</li>
-</ul>  
+- <a href="#project-setup">Project Setup</a>
+    - <a href="#installing">Installing</a>
+    - <a href="#development">Development</a>
+    - <a href="#production">Production</a>
+    - <a href="#lint">Code corrections</a>
+    - <a href="#tests">Running tests</a>
+      
+- <a href="#features">Features</a>
+- <a href="#qa">Quality Assurance</a>
+
 
 ## <span id="project-setup">Project setup</span>
 
-
 **requirements:**
-<ul>  
-	<li>node 14.17.0</li>  
-</ul>  
-
+- node 14.17.0
 
 ### <span id="installing">Installing</span>
 ```  
@@ -83,10 +60,10 @@ below all the features are listed for clarity. The application:
 
 - displays random programming quotes,
 - displays random wisdom quotes,
-  allows the user to get new quotes with the click of a button
+- allows the user to get new quotes with the click of a button
 - has a dedicated page for displaying the users favorite quotes,
 - enables the user to add quotes as their favorites,
-- enables the user to remove quotes from their favourites,
+- enables the user to remove quotes from their favorites,
 - is mobile responsive and ready for each screen size,
 - shows either a desktop navigation or mobile navigation depending on the screen size
 

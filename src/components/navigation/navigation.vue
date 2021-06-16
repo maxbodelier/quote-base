@@ -73,6 +73,17 @@ export default {
     cursor: pointer;
   }
 
+  @media only screen and (max-width: 420px) {
+    .home {
+      margin-left: 16px;
+      margin-right: 8px;
+    }
+    .favorites {
+      margin-left: 8px;
+      margin-right: 16px;
+    }
+  }
+
   .home {
     &.router-link-exact-active, &:hover{
       fill: $icon-color-accent-green;
